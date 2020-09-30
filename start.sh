@@ -1,2 +1,3 @@
- export SECRET_KEY=CdshbWTQ66QW66
- python3.8 manage.py server
+ python3 manage.py server
+export SECRET_KEY='12345'
+
