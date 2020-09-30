@@ -37,4 +37,25 @@ class Role(db.Model):
 #     id = db.Column(db.Integer(), primary_key=True)
 #     user_id = db.Column(db.Integer(), db.ForeignKey('users.id', ondelete='CASCADE'))
 #     role_id = db.Column(db.Integer(), db.ForeignKey('roles.id', ondelete='CASCADE'))
-   
+
+ class Grades(db.Model):
+    __tablename__ = 'grades'
+
+    id = db.Column(db.Integer,primary_key=True)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    test_id = db.Column(db.Integer,db.ForeignKey('test.id'))
+    
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+    @classmethod
+    def get_grades(cls,id):
+        grades = Grades.query.filter_by(test_id=id).all()
+        return grade
+
+    def __repr__(self):
+        return f'{self.user_id}:{self.test_id}'
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)  
