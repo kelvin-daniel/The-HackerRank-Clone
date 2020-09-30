@@ -3,7 +3,7 @@ class Config():
     General app configuration 
     '''
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://timothy:index506119056@localhost/hackerrank'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://username:password@localhost/hackerrank'
 
 
 class ProdConfig(Config):

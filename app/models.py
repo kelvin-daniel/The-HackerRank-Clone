@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))    
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f'User ({self.username})'
 
 
 # Role data-model
