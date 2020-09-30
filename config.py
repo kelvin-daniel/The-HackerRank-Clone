@@ -5,7 +5,7 @@ class Config:
     General configuration parent class
     '''
     SECRET_KEY=os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:collins2000@localhost/oneminute_pitches'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:collins2000@localhost/hackerrank'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     
@@ -41,7 +41,7 @@ class TestConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://james:password@localhost/oneminute_pitches_test'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:collins2000@localhost/hackerrank_test'
 
 class DevConfig(Config):
     '''
@@ -49,7 +49,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:collins2000@localhost/oneminute_pitches'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:collins2000@localhost/hackerrank'
     DEBUG = True
 
 config_options = {
