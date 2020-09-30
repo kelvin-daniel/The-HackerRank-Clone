@@ -15,7 +15,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-    SUBJECT_PREFIX = 'One Minute Pitch!'
+    SUBJECT_PREFIX = 'HackerRank!'
     SENDER_EMAIL = 'akumucollins001@gmail.com'
 
     # simplemde  configurations
