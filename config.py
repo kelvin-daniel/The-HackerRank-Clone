@@ -1,10 +1,12 @@
+import os
+
 class Config():
     '''
     General app configuration 
     '''
 
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://username:password@localhost/hackerrank'
-
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 class ProdConfig(Config):
     pass
