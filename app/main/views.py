@@ -52,7 +52,7 @@ def update_profile(uname):
     
     return render_template('profile/update.html',form =form)
 
-@app.route('/submit', methods=['GET', 'POST'])
+@main.route('/submit', methods=['GET', 'POST'])
 @login_required
 def submit():
 	form = SubmitForm()
@@ -70,11 +70,11 @@ def submit():
 		)
 		db.session.add(questiondata)
 		db.session.commit()
-		flash('Your question has been nestled deep within the quizzing engine')
+		flash('Your question has been nested deep within the quizzing engine')
 		return render_template('submit.html', form=form, users=getStandings())
 	return render_template('submit.html', form=form, users=getStandings())
 
-@app.route('/quiz', methods=['GET', 'POST'])
+@main.route('/quiz', methods=['GET', 'POST'])
 @login_required
 def quiz():
 	form = QuizForm()
@@ -91,7 +91,7 @@ def quiz():
 		return render_template('quiz.html', questions_to_display=questions_to_display, form=form, users=getStandings())
 
 
-@app.route('/answer')
+@main.route('/answer')
 def fetch_answer():
 	#id is the question id and userid is the User id
 	#Storing the data from the request
@@ -132,17 +132,17 @@ def fetch_answer():
 
 	return jsonify(score = presentScore, correct = correct)
 
-@app.route('/quiz/<string:category>')
+@main.route('/quiz/<string:category>')
 @login_required
 def categorywise(category):
 	categoryList = ['math',
-		'pop_culture',
-		'history',
-		'sports',
-		'business',
-		'tech',
-		'geography',
-		'other',]
+		'python',
+		'Ruby',
+		'C++',
+		'C',
+		'PHP',
+		'JavaScript',
+		'General',]
 	if category in categoryList:
 		form = QuizForm()
 		if current_user.answered is None:
@@ -169,13 +169,9 @@ def categorywise(category):
 		flash('Please enter a url where the category is any one of' + str(categoryList))
 		return redirect(url_for('quiz.html', questions_to_display=questions_to_display, form=form, users=getStandings()))
 
-@app.route('/score')
+@main.route('/score')
 @login_required
 def scoreboard():
 	#To allow sorting by username just do an ajax request back to score board with argument (like /score/#username then /score/#score)
 	users = User.query.order_by(User.score.desc())
 	return render_template('scoreboard.html', users=users)
-
-#Starting the server with the run method
-if __name__ == '__main__':
-	app.run()

@@ -19,7 +19,7 @@ class SubmitForm(FlaskForm):
 	)
 	category = SelectField(
 		'category', 
-		choices=[('math', 'Math'), ('pop_culture', 'Pop Culture'), ('history', 'History'), ('sports', 'Sports'), ('business', 'Business'), ('tech', 'Technology'), ('geography', 'Geography'), ('other', 'Other')], 
+		choices=[('math', 'Math'), ('python', 'Python'), ('Ruby', 'Ruby'), ('C++', 'C++'), ('C', 'C'), ('PHP', 'PHP'), ('JavaScript', 'JavaScript'), ('General', 'General')], 
 		validators=[Required()]
 	)
 	difficulty = SelectField(
