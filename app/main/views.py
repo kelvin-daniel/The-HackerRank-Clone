@@ -131,3 +131,41 @@ def fetch_answer():
 	db.session.commit()
 
 	return jsonify(score = presentScore, correct = correct)
+
+@app.route('/quiz/<string:category>')
+@login_required
+def categorywise(category):
+	categoryList = ['math',
+		'pop_culture',
+		'history',
+		'sports',
+		'business',
+		'tech',
+		'geography',
+		'other',]
+	if category in categoryList:
+		form = QuizForm()
+		if current_user.answered is None:
+			current_user.answered = dumps([])
+			db.session.commit()
+
+		alreadyAns = loads(current_user.answered)
+		#Check the questions to display
+		questions_to_display = Questions.query.filter(Questions.creatorid != str(current_user.id)).filter( ~Questions.questionid.in_(alreadyAns)).filter( Questions.category == category ).all()
+
+		if len(questions_to_display) is 0:
+			flash("We're so sorry but it seems that there are no questions on this topic")
+		return render_template('quiz.html', questions_to_display=questions_to_display, form=form, users=getStandings())
+	else:
+		form = QuizForm()
+		if current_user.answered is None:
+			current_user.answered = dumps([])
+			db.session.commit()
+
+
+		alreadyAns = loads(current_user.answered)
+		#Check the questions to display
+		questions_to_display = Questions.query.filter(Questions.creatorid != str(current_user.id)).filter( ~Questions.questionid.in_(alreadyAns)).all()
+		flash('Please enter a url where the category is any one of' + str(categoryList))
+		return redirect(url_for('quiz.html', questions_to_display=questions_to_display, form=form, users=getStandings()))
+
