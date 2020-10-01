@@ -73,3 +73,19 @@ def submit():
 		flash('Your question has been nestled deep within the quizzing engine')
 		return render_template('submit.html', form=form, users=getStandings())
 	return render_template('submit.html', form=form, users=getStandings())
+
+@app.route('/quiz', methods=['GET', 'POST'])
+@login_required
+def quiz():
+	form = QuizForm()
+	if current_user.answered is None:
+		current_user.answered = dumps([])
+		db.session.commit()
+		questions_to_display = Questions.query.filter(Questions.creatorid != str(current_user.id)).all()
+		return render_template('quiz.html', questions_to_display=questions_to_display, form=form, users=getStandings())
+
+	else:
+		alreadyAns = loads(current_user.answered)
+		#Check the questions to display
+		questions_to_display = Questions.query.filter(Questions.creatorid != str(current_user.id)).filter( ~Questions.questionid.in_(alreadyAns)).all()
+		return render_template('quiz.html', questions_to_display=questions_to_display, form=form, users=getStandings())
