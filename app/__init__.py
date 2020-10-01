@@ -15,6 +15,7 @@ mail = Mail()
 
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
+login_manager.login_message = 'please login to view this page'
 photos = UploadSet('photos', IMAGES)
 mail = Mail()
 simple = SimpleMDE()

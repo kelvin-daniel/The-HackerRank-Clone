@@ -22,22 +22,10 @@ class Config:
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
 
-<<<<<<< HEAD
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://username:password@localhost/hackerrank'
-    SQLALCHEMY_TRACK_MODIFICATIONS=True
-    SECRET_KEY=os.environ.get('SECRET_KEY')
-    UPLOADED_PHOTOS_DEST ='app/static/photos'
-    MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-=======
     @staticmethod
     def init_app(app):
         pass
 
->>>>>>> f340677d642eb8595c5a88cef72c1d82c7fca5f7
 
 class ProdConfig(Config):
     '''
