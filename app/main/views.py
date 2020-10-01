@@ -11,7 +11,7 @@ from .forms import SubmitForm, QuizForm
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',users=getStandings())
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
@@ -51,3 +51,25 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
     
     return render_template('profile/update.html',form =form)
+
+@app.route('/submit', methods=['GET', 'POST'])
+@login_required
+def submit():
+	form = SubmitForm()
+	if form.validate_on_submit():
+		questiondata = Questions(
+			question=form.question.data,
+			option1=form.option1.data,
+			option2=form.option2.data,
+			option3=form.option3.data,
+			option4=form.option4.data,
+			answer=form.answer.data,
+			creatorid=current_user.id,
+			category=form.category.data,
+			difficulty=form.difficulty.data
+		)
+		db.session.add(questiondata)
+		db.session.commit()
+		flash('Your question has been nestled deep within the quizzing engine')
+		return render_template('submit.html', form=form, users=getStandings())
+	return render_template('submit.html', form=form, users=getStandings())
