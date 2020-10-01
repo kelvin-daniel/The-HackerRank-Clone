@@ -9,6 +9,10 @@ import unicodedata
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+def getStandings():
+	users = User.query.order_by(User.score.desc())
+	return users
+
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
 

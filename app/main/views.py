@@ -1,10 +1,13 @@
-from flask import render_template,redirect,url_for,abort,request,flash
+from flask import render_template,redirect,url_for,abort,request,flash,jsonify,session
 from flask_login import login_required,current_user
 from . import main
 from .forms import *
 from ..models import *
 from .. import db, photos
 import markdown2
+from pickle import loads, dumps
+import json
+from .forms import SubmitForm, QuizForm
 
 @main.route('/')
 def index():
