@@ -169,3 +169,13 @@ def categorywise(category):
 		flash('Please enter a url where the category is any one of' + str(categoryList))
 		return redirect(url_for('quiz.html', questions_to_display=questions_to_display, form=form, users=getStandings()))
 
+@app.route('/score')
+@login_required
+def scoreboard():
+	#To allow sorting by username just do an ajax request back to score board with argument (like /score/#username then /score/#score)
+	users = User.query.order_by(User.score.desc())
+	return render_template('scoreboard.html', users=users)
+
+#Starting the server with the run method
+if __name__ == '__main__':
+	app.run()
