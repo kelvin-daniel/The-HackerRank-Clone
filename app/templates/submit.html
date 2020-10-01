@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 {% block head %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery.min.js') }}">\x3C/script>')</script>
-
-	<!-- Materialize, note: the js has to be loaded AFTER Jquery -->
-	<!-- Compiled and minified CSS -->
+    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery.min.js') }}">\x3C/script>')</script>
+    
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-	<!-- Compiled and minified JavaScript -->
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-	<!--Let browser know website is optimized for mobile-->
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -34,25 +32,25 @@
 <ul id="quizdropdown" class="dropdown-content">
 	<li><a href="{{ url_for('quiz') }}" >All Catgories</a></li>
 	<li><a href="{{ url_for('categorywise', category='math') }}">Math</a></li>
-	<li><a href="{{ url_for('categorywise', category='pop_culture') }}">Pop Culture</a></li>
-	<li><a href="{{ url_for('categorywise', category='history') }}">History</a></li>
-	<li><a href="{{ url_for('categorywise', category='sports') }}">Sports</a></li>
-	<li><a href="{{ url_for('categorywise', category='business') }}" >Business</a></li>
-	<li><a href="{{ url_for('categorywise', category='tech') }}" class="truncate">Technology</a></li>
-	<li><a href="{{ url_for('categorywise', category='geography') }}" class="truncate">Geography</a></li>
-	<li><a href="{{ url_for('categorywise', category='other') }}">Other</a></li>
+	<li><a href="{{ url_for('categorywise', category='python') }}">Python</a></li>
+	<li><a href="{{ url_for('categorywise', category='Ruby') }}">Ruby</a></li>
+	<li><a href="{{ url_for('categorywise', category='C++') }}">C++</a></li>
+	<li><a href="{{ url_for('categorywise', category='C') }}" >C</a></li>
+	<li><a href="{{ url_for('categorywise', category='PHP') }}" class="truncate">PHP</a></li>
+	<li><a href="{{ url_for('categorywise', category='JavaScript') }}" class="truncate">JavaScript</a></li>
+	<li><a href="{{ url_for('categorywise', category='General') }}">General</a></li>
 </ul>
 <!-- Since the selectors based on ID and it seems duplicates cause an error -->
 <ul id="quizdropdown2" class="dropdown-content">
 	<li><a href="{{ url_for('quiz') }}" >All Catgories</a></li>
 	<li><a href="{{ url_for('categorywise', category='math') }}">Math</a></li>
-	<li><a href="{{ url_for('categorywise', category='pop_culture') }}">Pop Culture</a></li>
-	<li><a href="{{ url_for('categorywise', category='history') }}">History</a></li>
-	<li><a href="{{ url_for('categorywise', category='sports') }}">Sports</a></li>
-	<li><a href="{{ url_for('categorywise', category='business') }}" >Business</a></li>
-	<li><a href="{{ url_for('categorywise', category='tech') }}" class="truncate">Technology</a></li>
-	<li><a href="{{ url_for('categorywise', category='geography') }}" class="truncate">Geography</a></li>
-	<li><a href="{{ url_for('categorywise', category='other') }}">Other</a></li>
+	<li><a href="{{ url_for('categorywise', category='python') }}">Python</a></li>
+	<li><a href="{{ url_for('categorywise', category='Ruby') }}">Ruby</a></li>
+	<li><a href="{{ url_for('categorywise', category='C++') }}">C++</a></li>
+	<li><a href="{{ url_for('categorywise', category='C') }}" >C</a></li>
+	<li><a href="{{ url_for('categorywise', category='PHP') }}" class="truncate">PHP</a></li>
+	<li><a href="{{ url_for('categorywise', category='JavaScript') }}" class="truncate">JavaScript</a></li>
+	<li><a href="{{ url_for('categorywise', category='General') }}">General</a></li>
 </ul>
 
 <nav class="#448aff teal accent-4">
@@ -190,7 +188,7 @@
 		</span>
 	</div>
 	<div class="valign-wrapper">
-		<button class="valign btn-large waves-effect waves-light" type="submit">Add the Question     <i class="material-icons">send</i></button>
+		<button class="valign btn-large waves-effect waves-light" type="submit">Add the Question <i class="material-icons">send</i></button>
 	</div>
 </form>
 {% endblock content %}
