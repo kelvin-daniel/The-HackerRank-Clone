@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block head %}
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery.min.js') }}">\x3C/script>')</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
 
 	<script type='text/javascript' src="{{ url_for('static', filename='anscheck.js') }}">
 	</script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -17,11 +17,11 @@
 	}
 	</style>
 	<script type='text/javascript'>
-		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		$SCRIPT_ROOT = '{{request.script_root|tojson|safe}}';
 		$(document).ready(function() {
 			$('select').material_select();
 			$(".button-collapse").sideNav(); 
-			startScript({{ current_user.id }}, {{ users[0].score }});
+			startScript('{{ current_user.id}}, {{users[0].score}}');
 		});
 	</script>
 
@@ -33,25 +33,25 @@
 <ul id="quizdropdown" class="dropdown-content">
 	<li><a href="{{ url_for('quiz') }}" >All Catgories</a></li>
 	<li><a href="{{ url_for('categorywise', category='math') }}">Math</a></li>
-	<li><a href="{{ url_for('categorywise', category='pop_culture') }}">Pop Culture</a></li>
-	<li><a href="{{ url_for('categorywise', category='history') }}">History</a></li>
-	<li><a href="{{ url_for('categorywise', category='sports') }}">Sports</a></li>
-	<li><a href="{{ url_for('categorywise', category='business') }}" >Business</a></li>
-	<li><a href="{{ url_for('categorywise', category='tech') }}" class="truncate">Technology</a></li>
-	<li><a href="{{ url_for('categorywise', category='geography') }}" class="truncate">Geography</a></li>
-	<li><a href="{{ url_for('categorywise', category='other') }}">Other</a></li>
+	<li><a href="{{ url_for('categorywise', category='python') }}">Python</a></li>
+	<li><a href="{{ url_for('categorywise', category='Ruby') }}">Ruby</a></li>
+	<li><a href="{{ url_for('categorywise', category='C++') }}">C++</a></li>
+	<li><a href="{{ url_for('categorywise', category='C') }}" >C</a></li>
+	<li><a href="{{ url_for('categorywise', category='PHP') }}" class="truncate">PHP</a></li>
+	<li><a href="{{ url_for('categorywise', category='JavaScript') }}" class="truncate">JavaScript</a></li>
+	<li><a href="{{ url_for('categorywise', category='General') }}">General</a></li>
 </ul>
 <!-- Since the selectors based on ID and it seems duplicates cause an error -->
 <ul id="quizdropdown2" class="dropdown-content">
 	<li><a href="{{ url_for('quiz') }}" >All Catgories</a></li>
 	<li><a href="{{ url_for('categorywise', category='math') }}">Math</a></li>
-	<li><a href="{{ url_for('categorywise', category='pop_culture') }}">Pop Culture</a></li>
-	<li><a href="{{ url_for('categorywise', category='history') }}">History</a></li>
-	<li><a href="{{ url_for('categorywise', category='sports') }}">Sports</a></li>
-	<li><a href="{{ url_for('categorywise', category='business') }}" >Business</a></li>
-	<li><a href="{{ url_for('categorywise', category='tech') }}" class="truncate">Technology</a></li>
-	<li><a href="{{ url_for('categorywise', category='geography') }}" class="truncate">Geography</a></li>
-	<li><a href="{{ url_for('categorywise', category='other') }}">Other</a></li>
+	<li><a href="{{ url_for('categorywise', category='python') }}">Python</a></li>
+	<li><a href="{{ url_for('categorywise', category='Ruby') }}">Ruby</a></li>
+	<li><a href="{{ url_for('categorywise', category='C++') }}">C++</a></li>
+	<li><a href="{{ url_for('categorywise', category='C') }}" >C</a></li>
+	<li><a href="{{ url_for('categorywise', category='PHP') }}" class="truncate">PHP</a></li>
+	<li><a href="{{ url_for('categorywise', category='JavaScript') }}" class="truncate">JavaScript</a></li>
+	<li><a href="{{ url_for('categorywise', category='General') }}">General</a></li>
 </ul>
 
 <!-- NavBar -->
