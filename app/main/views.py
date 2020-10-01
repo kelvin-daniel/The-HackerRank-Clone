@@ -89,3 +89,45 @@ def quiz():
 		#Check the questions to display
 		questions_to_display = Questions.query.filter(Questions.creatorid != str(current_user.id)).filter( ~Questions.questionid.in_(alreadyAns)).all()
 		return render_template('quiz.html', questions_to_display=questions_to_display, form=form, users=getStandings())
+
+
+@app.route('/answer')
+def fetch_answer():
+	#id is the question id and userid is the User id
+	#Storing the data from the request
+	id = request.args.get('id', 0, type=int)
+	value = request.args.get('value', 0, type=str)
+	userId = request.args.get('userid', 0, type=int)
+
+	#Fetching question and User data
+	attempted_question = Questions.query.filter( Questions.questionid == id ).all()
+	presentUser = User.query.get( userId )
+	presentScore = presentUser.score
+
+	#Appropirately changing the USER's score
+	if attempted_question[0].answer == value:
+		if attempted_question[0].difficulty == 'easy':
+			presentScore = presentScore + 1
+		elif attempted_question[0].difficulty == 'moderate':
+			presentScore = presentScore + 2
+		elif attempted_question[0].difficulty == 'hard':
+			presentScore = presentScore + 3
+		elif attempted_question[0].difficulty == 'insane':
+			presentScore = presentScore + 4		
+		
+		presentUser.score = presentScore
+		correct = 1
+	else:
+		presentScore = presentScore - 1
+		presentUser.score = presentScore
+		correct = 0
+
+
+	beforePickle = current_user.answered
+	afterPickle = loads(beforePickle)
+
+	afterPickle.append(id)
+	current_user.answered = dumps(afterPickle)
+	db.session.commit()
+
+	return jsonify(score = presentScore, correct = correct)
