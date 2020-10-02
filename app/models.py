@@ -44,8 +44,10 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-    def __init__(self, name, username, password, score):
+    def __init__(self, name, username, password_hash, score):
 		    self.name = name
+			self.username = username
+			self.password_hash = generate_password_hash(password)
 		    self.score = score
 
 def is_authenticated(self):

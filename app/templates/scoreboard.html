@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block head %}->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
@@ -21,7 +20,7 @@
 		width: 20px;
 	}
 	</style>
-	<title>Scoreboard - Quizzing Engine</title>
+	<title>Scoreboard - hackerrank clone</title>
 {% endblock head %}
 
 {% block content %}
@@ -53,7 +52,7 @@
 
 <nav class="#448aff teal accent-4">
 	<div class="nav-wrapper">
-		<a href="{{ url_for('home') }}" class="brand-logo"> Quiz Engine</a>
+		<a href="{{ url_for('home') }}" class="brand-logo"> hackerrank Clone</a>
 		<a href="" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li><a class="center-align teal-text text-darken-4" href="{{ url_for('scoreboard') }}">{% if current_user.name %}
@@ -94,7 +93,7 @@
 	<thead>
 		<tr>
 			<th data-field='position'>Position</th>
-			<th data-field='name'>Player</th>
+			<th data-field='name'>Student</th>
 			<th data-field='score'>Score</th>
 		</tr>
 	</thead>

@@ -31,6 +31,8 @@ def logout():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        import pdb;
+        pdb.set_trace()
         user = User(email = form.email.data, username = form.username.data,password = form.password.data)
         db.session.add(user)
         db.session.commit()
