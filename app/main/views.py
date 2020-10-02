@@ -70,7 +70,7 @@ def submit():
 		)
 		db.session.add(questiondata)
 		db.session.commit()
-		flash('Your question has been nested deep within the quizzing engine')
+		flash('Your question has been recorded')
 		return render_template('submit.html', form=form, users=getStandings())
 	return render_template('submit.html', form=form, users=getStandings())
 

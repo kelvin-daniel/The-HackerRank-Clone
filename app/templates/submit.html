@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-	
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -23,7 +22,7 @@
 	}
 	</style>
 
-	<title>Submit - Quiz Engine</title>
+	<title>Submit - Hackerrank Clone</title>
 {% endblock head %}
 {% block content %}
 
@@ -55,7 +54,7 @@
 
 <nav class="#448aff teal accent-4">
 	<div class="nav-wrapper">
-		<a href="{{ url_for('home') }}" class="brand-logo"> Quiz Engine</a>
+		<a href="{{ url_for('home') }}" class="brand-logo"> Hackerrank Clone</a>
 		<a href="" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li><a class="center-align teal-text text-darken-4" href="{{ url_for('scoreboard') }}">{% if current_user.name %}
@@ -91,7 +90,7 @@
 </nav>
 <!-- End NavBar -->
 
-<h5 class="center-align">Submit Your Question to be added to the Quizzing Engine</h5>
+<h5 class="center-align">Submit Your Questions.</h5>
 <br>
 <form action="" method='POST'>
 	{{ form.csrf_token }}
@@ -188,7 +187,7 @@
 		</span>
 	</div>
 	<div class="valign-wrapper">
-		<button class="valign btn-large waves-effect waves-light" type="submit">Add the Question <i class="material-icons">send</i></button>
+		<button class="valign btn-large waves-effect waves-light" type="submit">Add Question <i class="material-icons">send</i></button>
 	</div>
 </form>
 {% endblock content %}
