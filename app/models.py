@@ -44,27 +44,6 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-    def __init__(self, name, username, password_hash, score):
-		    self.name = name
-			self.username = username
-			self.password_hash = generate_password_hash(password)
-		    self.score = score
-
-def is_authenticated(self):
-	    return True
-
-def is_active(self):
-		return True
-
-def is_anonymous(self):
-		return False
-
-def get_id(self):
-	    return (self.id)
-
-def __repr__(self):
-		return "<Username is '%s'" % (self.username)
-
 class Role(db.Model):
     __tablename__ = 'roles'
 
@@ -89,17 +68,6 @@ class Questions(db.Model):
 	questionid = db.Column(db.Integer, primary_key=True)
 	category = db.Column(db.String, nullable=False)
 	difficulty = db.Column(db.String, nullable=False)
-
-	def __init__(self, question, option1, option2, option3, option4, answer, creatorid, category, difficulty):
-		self.question = question
-		self.option1 = option1
-		self.option2 = option2
-		self.option3 = option3
-		self.option4 = option4
-		self.answer = answer
-		self.creatorid = creatorid
-		self.category = category
-		self.difficulty = difficulty
 
 	def __repr__(self):
 		return "<Question id is %s and creatorid is %s" % (self.questionid, self.creatorid)
